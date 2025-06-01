@@ -134,8 +134,12 @@
                   <img src="../assets/img/projects/our-projects/alarcha-parking/2.jpg" alt="" style="width:1280px; height:1080px; object-fit:cover;">
                 </div>
                 <div class="swiper-slide">
-                  <div class="video-slide" style="width:1280px; height:1080px;">
-                    <iframe id="video-iframe" width="1280" height="1080" src="https://www.youtube.com/embed/4q7snELKWRc?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                  <!-- Картинка с иконкой для открытия модального окна -->
+                  <div style="position: relative; width:1280px; height:1080px; cursor: pointer;" onclick="openVideoModal('4q7snELKWRc')">
+                    <img src="../assets/img/projects/our-projects/alarcha-parking/3.jpg" alt="Video" style="width:1280px; height:1080px; object-fit:cover;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 100px; color: white; opacity: 0.8;">
+                      ▶️
+                    </div>
                   </div>
                 </div>
               </div>
@@ -148,63 +152,27 @@
       </div>
     </section>
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://www.youtube.com/iframe_api"></script>
+    <div id="videoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.8); z-index:10000; justify-content:center; align-items:center;">
+      <div style="position:relative; width:80%; max-width:960px;">
+        <iframe id="videoIframe" width="100%" height="540" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <button onclick="closeVideoModal()" style="position:absolute; top:10px; right:10px; font-size:30px; color:white; background:none; border:none; cursor:pointer;">✖️</button>
+      </div>
+    </div>
 
     <script>
-    let swiper;
-    let player;
-    const videoSlideIndex = 2; // Индекс слайда с видео (начиная с 0)
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('video-iframe', {
-        events: {
-          'onStateChange': function(event) {
-            if (event.data == YT.PlayerState.PLAYING) {
-              swiper.autoplay.stop(); // Остановим автоматическую прокрутку
-              swiper.allowSlideNext = false; // Блокируем переключение
-              swiper.allowSlidePrev = false;
-            } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
-              swiper.allowSlideNext = true; // Разрешаем переключение
-              swiper.allowSlidePrev = true;
-              swiper.autoplay.start(); // Возобновляем автопрокрутку
-            }
-          }
-        }
-      });
+    function openVideoModal(videoId) {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('videoIframe');
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      modal.style.display = 'flex';
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      swiper = new Swiper('.slides-1', {
-        speed: 600,
-        loop: true,
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false
-        },
-        slidesPerView: 1,
-        pagination: {
-          el: '.swiper-pagination',
-          type: 'bullets',
-          clickable: true
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        on: {
-          slideChange: function () {
-            if (player) {
-              if (swiper.realIndex === videoSlideIndex) {
-                player.playVideo();
-              } else {
-                player.pauseVideo();
-              }
-            }
-          }
-        }
-      });
-    });
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('videoIframe');
+      iframe.src = ''; // Останавливаем видео
+      modal.style.display = 'none';
+    }
     </script>
 
     <section id="project-details" class="project-details section-bg" >
