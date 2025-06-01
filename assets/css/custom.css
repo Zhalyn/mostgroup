@@ -1,0 +1,423 @@
+:root {
+  --color-default: #364d59;
+  --color-primary: #feb900;
+  --color-secondary: #52565e;
+}
+
+:root {
+  --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-primary: "Roboto", sans-serif;
+  --font-secondary: "Work Sans", sans-serif;
+}
+
+.dropdown {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.dropbtn {
+    width: 100%;
+    background-color: transparent; /* Сделать фон прозрачным */
+    color: #333; /* Цвет текста */
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.dropdown-content {
+    display: none;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.dropdown-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dropdown-content li {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+}
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: for better readability */
+    color: white;
+    padding: 10px;
+}   
+.carousel-item {
+    transition: transform 0.5s ease;
+}
+.mobile-image {
+    display: none; /* Initially hidden */
+    background-image: url('../img/main-back.png'); /* Path to static image */
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Media query for devices with max-width of 768px */
+  @media (max-width: 768px) {
+    .desktop-video {
+      display: none; /* Hide the video on mobile devices */
+    }
+    .mobile-image {
+      display: block; /* Show the image on mobile devices */
+    }
+  }
+  /* Basic CSS Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling for the hero container */
+.hero {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Styling for the video background */
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Styling for the hero content */
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    padding: 10px; /* Отступы внутри блока */
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1.0); /* Тень блока */
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    padding: 10px; /* Отступы внутри блока */
+    text-shadow: 0px 0px 25px rgba(0, 0, 0, 1.0); /* Тень блока */
+    line-height: 1.2;
+}
+.hero-content p span {
+  font-size: 15px;
+  margin-bottom: 5px;
+  text-shadow: 0px 0px 25px rgba(0, 0, 0, 1.0);
+  line-height:1;
+}
+#whatsapp-widget {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: #bef0d1;
+  color: #fff;
+  padding: 5px;
+  border-radius: 50px;
+  cursor: pointer;
+  background-size: 60px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: background-color 0.3s;
+  z-index: 9999;
+}
+
+#whatsapp-widget.show {
+  display: block;
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+#whatsapp-widget:hover {
+  background-color: #8ed6bb;
+  animation: bounce 0.5s;
+}
+
+@keyframes bounce {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-5px);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+    /* Стили для фиксированной строки */
+    .headcontact-bar {
+      display: flex; /* Changed from grid to flex */
+      justify-content: space-between; /* Ensure even spacing */
+      align-items: center;
+      position: fixed;
+      top: -80px;
+      height: auto;
+      width: 100%;
+      color: var(--color-primary);
+      text-align: center;
+      transition: top 0.3s;
+      z-index: 9999;
+      background-image: url('assets/img/main-back.png'); /* Ensure background image is included */
+      padding: 0px 50px; /* Adjust padding as needed */
+      backdrop-filter: blur(5%);
+    }
+
+  /* Styles for links */
+  .headcontact-bar a {
+      color: var(--color-primary);
+      text-decoration: none;
+      margin-right: 10px;
+
+  }
+
+  .headcontact-bar img {
+      height: 50px;
+  }
+  .desk-contact {
+    display: flex;
+    gap:25px;
+  }
+  
+  .language-links {
+    display: flex;
+    gap: 10px; /* Adjust the gap between language links */
+  }
+
+  .mobile-contact-icons a, 
+  .desk-contact a {
+      margin: 0 5px;
+  }
+
+  .mobile-contact-icons {
+      display: none;
+  }
+
+  @media (max-width: 768px) {
+      .mobile-contact-icons {
+          display: flex;
+          gap: 30px;
+          font-size: 30px;
+      }
+      .headcontact-bar .desk-contact {
+          display: none;
+      }
+      .headcontact-bar {
+          font-size: large;
+      }
+  }
+.image-container {
+    width: auto;  /* Автоматическая ширина, чтобы сохранить пропорции */
+    height: 600px;  /* Фиксированная высота контейнера */
+    overflow: hidden;  /* Скрыть части изображения, которые выходят за рамки контейнера */
+}
+.image-container img {
+  width: 100%;  /* Заполнить ширину контейнера */
+  height: auto;  /* Автоматическая высота для сохранения пропорций */
+  object-fit: cover;  /* Обрезать изображение, чтобы оно заполнило контейнер без искажения пропорций */
+  object-position: top;  /* Выровнять изображение по верхней части контейнера */
+}
+
+.rectangle-image {
+  width: auto;  /* Фиксированная ширина второго изображения */
+  height: auto;  /* Автоматическая высота для сохранения пропорций */
+  display: block;  /* Убедиться, что изображение не строчное */
+  margin: 0 auto;  /* Центрировать изображение по горизонтали */
+  margin-top: 3%;
+}
+.rectangle-image img {
+  width: 100%;  /* Фиксированная ширина изображения */
+  height: 100px;  /* Фиксированная высота изображения */
+  object-fit: cover;  /* Обрезать изображение, чтобы оно заполнило контейнер без искажения */
+  overflow: hidden;  /* Скрыть части изображения, которые выходят за рамки контейнера */
+}
+.manufacture {
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-top: 3%;
+}
+.manufacture img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  overflow: hidden;
+}
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.img-container img {
+  max-width: 100px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.img-container img:hover {
+  transform: scale(1.1);
+}
+
+.full-screen-img {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.full-screen-img img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.testimonial-img-small {
+  width: 100px; /* Resize the image to 100px width */
+  cursor: pointer; /* Change cursor to pointer when hovering over the image */
+  object-position: center;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.close {
+  position: fixed;
+  top: 105px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 2; /* Ensure close button is on top */
+  text-shadow: 0px 0px 15px var(--color-default); /* Add shadow with primary color */
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+  .modal-content {
+    width: 100%;
+    
+  }
+  .certificates {
+    font-size: 30px;
+  }
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.custom-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.custom-col {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 0;
+}
+
+.custom-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This will make the images cover the entire container */
+}
+
+@media (min-width: 992px) {
+  .custom-col {
+      flex: 0 0 49%;
+      max-width: 49%;
+  }
+
+  .custom-col:first-child {
+      margin-right: 5px;
+  }
+
+  .custom-col:last-child {
+      margin-left: 5px;
+  }
+}
+
+.custom-img {
+  width: 100%;
+  height: auto; /* Ensure the image maintains aspect ratio */
+  object-fit: cover; /* Ensures the image covers the container */
+}
