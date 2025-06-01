@@ -109,7 +109,6 @@
 
   <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs d-flex align-items-center" style="background-image: url('../assets/img/header-tunel.JPG');">
       <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
 
@@ -119,7 +118,94 @@
           <li>Projects</li>
         </ol>
       </div>
-    </div><!-- End Breadcrumbs -->
+    </div>
+
+    <section id="project-details" class="project-details">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-between gy-4">
+          <div class="col-lg-12 position-relative h-100">
+            <h2>Сonstruction of a parking lot in the Ala-Archa natural park, Kashka-Suu.</h2>
+            <div class="slides-1 portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+                <div class="swiper-slide">
+                  <img src="../assets/img/projects/our-projects/alarcha-parking/1.jpg" alt="" style="width:1280px; height:1080px; object-fit:cover;">
+                </div>
+                <div class="swiper-slide">
+                  <img src="../assets/img/projects/our-projects/alarcha-parking/2.jpg" alt="" style="width:1280px; height:1080px; object-fit:cover;">
+                </div>
+                <div class="swiper-slide">
+                  <div class="video-slide" style="width:1280px; height:1080px;">
+                    <iframe id="video-iframe" width="1280" height="1080" src="https://www.youtube.com/embed/4q7snELKWRc?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script>
+    let swiper;
+    let player;
+    const videoSlideIndex = 2; // Индекс слайда с видео (начиная с 0)
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('video-iframe', {
+        events: {
+          'onStateChange': function(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+              swiper.autoplay.stop(); // Остановим автоматическую прокрутку
+              swiper.allowSlideNext = false; // Блокируем переключение
+              swiper.allowSlidePrev = false;
+            } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+              swiper.allowSlideNext = true; // Разрешаем переключение
+              swiper.allowSlidePrev = true;
+              swiper.autoplay.start(); // Возобновляем автопрокрутку
+            }
+          }
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      swiper = new Swiper('.slides-1', {
+        speed: 600,
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        },
+        slidesPerView: 1,
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+          clickable: true
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        on: {
+          slideChange: function () {
+            if (player) {
+              if (swiper.realIndex === videoSlideIndex) {
+                player.playVideo();
+              } else {
+                player.pauseVideo();
+              }
+            }
+          }
+        }
+      });
+    });
+    </script>
 
     <section id="project-details" class="project-details section-bg" >
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -611,7 +697,7 @@
   </main><!-- End #main -->
 
          <!-- ======= Footer ======= -->
-         <footer id="footer" class="footer">
+        <footer id="footer" class="footer">
           <div class="footer-content position-relative">
             <div class="container">
               <div class="row">
@@ -671,7 +757,7 @@
       
           </div>
         </div>
-      </footer>
+        </footer>
   <!-- End Footer -->
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -700,6 +786,5 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
   </body>
 </html>
