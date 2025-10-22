@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Мост Групп - Главная</title>
-  <meta content="Дорожно-строительная компания номер №1 в Кыргызстане лицензии КРЦ-2 №04504 ( I уровень ответственности )." name="description">
+  <meta content="Дорожно-строительная компания номер №1 в Кыргызстане лицензии КРЦ-2 № 012022 ( I уровень ответственности )." name="description">
   <meta content="ОсОО Мост Групп, Мост Групп, Строительство Дорог, Most Group KG, асфальт, асфальтовое покрытие, бетон, производство бетона, ЩМА, лотки железобетонные, блоки железобетонные, лотки ЛР8, ЛР4, ЛР6, ЖБИ изделия, щебень, инертные материалы, отсев, строительство тоннелей, строительство мостов" name="keywords">
 
   <meta property="og:title" content="ОсОО Мост Групп">
@@ -117,18 +117,58 @@
   <section id="hero" class="hero">
 
     <!-- Hero section with video background -->
-    <div class="hero">
-      <video autoplay muted loop>
+  <div class="hero">
+
+      <video id="video1" class="hero-video active" autoplay muted loop>
+          <source src="../assets/video/video-backgroung-parking.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+      <video id="video2" class="hero-video" autoplay muted loop>
           <source src="../assets/video/video-background.mp4" type="video/mp4">
           Your browser does not support the video tag.
       </video>
       <div class="mobile-image"></div>
       <div class="hero-content">
           <h1>Мост Групп</h1>
-          <p>Дорожно-строительная компания №1 в Кыргызстане<br><span>лицензии КРЦ-2 №04504 ( I уровень ответственности ).</span></p>
+          <p>Дорожно-строительная компания №1 в Кыргызстане<br><span>лицензии КРЦ-2 № 012022 ( I уровень ответственности ).</span></p>
       </div>
-  </div>
 
+      <div class="video-switcher">
+          <button class="video-btn active" data-video="video1">
+              <span>Паркинг "Ала-Арча"</span>
+          </button>
+          <button class="video-btn" data-video="video2">
+              <span>Тунель "Чычкан"</span>
+          </button>
+      </div>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const videoButtons = document.querySelectorAll('.video-btn');
+      const videos = document.querySelectorAll('.hero-video');
+      
+      videoButtons.forEach(button => {
+          button.addEventListener('click', function() {
+              const targetVideoId = this.getAttribute('data-video');
+              
+              videoButtons.forEach(btn => btn.classList.remove('active'));
+              
+              this.classList.add('active');
+              
+              videos.forEach(video => {
+                  if (video.id === targetVideoId) {
+                      video.classList.add('active');
+                      video.play();
+                  } else {
+                      video.classList.remove('active');
+                      video.pause();
+                  }
+              });
+          });
+      });
+  });
+  </script>
   </section><!-- End Hero Section -->
 
   <main id="main"> 
@@ -968,7 +1008,7 @@
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <a href="https://www.metallobaza.kg/" target="_blank"><img src="https://www.metallobaza.kg/templates/metallobaza/images/logo.jpg" class="testimonial-img"  alt="Logo"></a>
+                  <a href="https://www.metallobaza.kg/" target="_blank"><img src="https://metallobaza.kg/wp-content/themes/mttheme2024/img/logo.png" class="testimonial-img"  alt="Logo"></a>
                   <h3>Первая Металлобаза</h3>
                   <h4>г. Бишкек</h4>
                   <br>
